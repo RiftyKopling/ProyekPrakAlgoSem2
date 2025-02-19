@@ -1,0 +1,138 @@
+#include <iostream>
+using namespace std;
+
+struct guru{
+    string nama;
+    int nip;
+    string mapel;
+};
+
+struct siswa{
+    string nama;
+    int nis;
+    string kelas;
+};
+
+int main(){
+    guru daftarguru[10] =   {
+                            {"Hisyam L Baihaqi S.Pd., M.Pd.", 123456789, "Agama Katolik"},
+                            {"Fiernaz Ingga Pratamai S.Pd., M.Pd.", 123456788, "Agama Hindu"},
+                            {"Aushaf Fathin Irsyad Nabil S.Pd., M.Pd.", 123456787, "Agama Buddha"},
+                            {"Raihan Natawangsa S.Pd., M.Pd.", 123456786, "Agama Konghucu"},
+                            {"Timothy Brian Megaranto Padang S.Pd., M.Pd.", 123456789, "Agama Islam"}
+                            };
+    siswa daftarsiswa[10] = {
+                            {"Muhammad Rifty Alfattah", 123240093, "VII A"},
+                            {"Utia Fajriatul Arofah", 123240096, "VII B"}
+                            };
+    int x = 5, y = 2, kembali = 1, menu, jumlahtambah;
+    char ulang = 'y';
+
+    do{
+        system("cls");
+        cout << "PROGRAM MANAJEMEN SEKOLAH" << endl;
+        cout << "1. Tampilkan Data Guru" << endl;
+        cout << "2. Tampilkan Data Siswa" << endl;
+        cout << "3. Tambah Data Guru" << endl;
+        cout << "4. Tambah Data Siswa" << endl;
+        cout << "5. Keluar" << endl;
+        cout << "Pilih Menu : "; cin >> menu;
+        cin.ignore();
+
+        switch(menu){
+            case 1 :
+            do{
+                system("cls");
+                for (int i = 0; i < x; i++) {
+                    cout << "Guru ke-" << i + 1 << " : " << daftarguru[i].nama << endl;
+                    cout << "NIP       : " << daftarguru[i].nip << endl;
+                    cout << "Mapel     : " << daftarguru[i].mapel << endl;
+                    cout << endl;
+                }
+                cout << "Apakah anda ingin kembali? y/n "; cin >> ulang;
+                cin.ignore();
+            }while(ulang == 'n');
+            break;
+            
+            case 2 :
+            do{
+            system("cls");
+            for (int i = 0; i < y; i++) {
+                cout << "Siswa ke-" << i + 1 << " : " << daftarsiswa[i].nama << endl;
+                cout << "NIS        : " << daftarsiswa[i].nis << endl;
+                cout << "Kelas      : " << daftarsiswa[i].kelas << endl;
+                cout << endl;
+            }
+                cout << "Apakah anda ingin kembali? y/n "; cin >> ulang;
+                cin.ignore();
+            }while(ulang == 'n');
+            break;
+
+            case 3 :
+            do{
+            system("cls");
+            cout << "Berapa banyak data guru yang ingin ditambahkan : ";
+            cin >> jumlahtambah;
+            cin.ignore();
+            cout << endl;
+
+            for (int i = 0; i < jumlahtambah; i++) {
+                if (x >= 10) {
+                    cout << "Maaf, kapasitas data guru sudah penuh!" << endl;
+                    break;
+                }
+                cout << "Nama Guru  : ";
+                getline(cin, daftarguru[x].nama);
+                cout << "NIP Guru   : ";
+                cin >> daftarguru[x].nip;
+                cin.ignore();
+                cout << "Mapel      : ";
+                getline(cin, daftarguru[x].mapel);
+                x++;
+            }
+                cout << "Apakah anda ingin kembali? y/n "; cin >> ulang;
+                cin.ignore();
+            }while(ulang == 'n');
+            break;
+
+            case 4 :
+            do{
+            system("cls");
+            cout << "Berapa banyak siswa yang ingin ditambahkan : ";
+            cin >> jumlahtambah;
+            cin.ignore();
+            cout << endl;
+
+            for (int i = 0; i < jumlahtambah; i++) {
+                if (y >= 10) {
+                    cout << "Maaf, kapasitas data siswa sudah penuh!" << endl;
+                    break;
+                }
+                cout << "Nama Siswa  : ";
+                getline(cin, daftarsiswa[y].nama);
+                cout << "NIS Siswa   : ";
+                cin >> daftarsiswa[y].nis;
+                cin.ignore();
+                cout << "Kelas Siswa : ";
+                getline(cin, daftarsiswa[y].kelas);
+                y++;
+            }   
+                cout << "Apakah anda ingin kembali? y/n "; cin >> ulang;
+                cin.ignore();
+            }while(ulang == 'n');
+            break; 
+
+
+            case 5 :
+            kembali = 5;
+            break;
+
+            default :
+            kembali = 1;
+            break;
+
+        }
+    }while(kembali != 5);
+}
+
+
