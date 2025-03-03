@@ -14,7 +14,9 @@ int main(){
         cout << "2. Tampilkan Data Siswa" << endl;
         cout << "3. Tambah Data Guru" << endl;
         cout << "4. Tambah Data Siswa" << endl;
-        cout << "5. Keluar" << endl;
+        cout << "5. Cari Data Guru" << endl;
+        cout << "6. Cari Data Siswa" << endl;
+        cout << "7. Keluar" << endl;
         cout << "Pilih Menu : "; cin >> menu;
         cin.ignore();
 
@@ -57,7 +59,25 @@ int main(){
 
 
             case 5 :
-            kembali = 5;
+            do{
+                system("cls");
+                cariguru();
+                    cout << "Apakah anda ingin kembali? y/n "; cin >> ulang;
+                    cin.ignore();
+                }while(ulang == 'n');
+            break;
+
+            case 6 :
+            do{
+                system("cls");
+                carisiswa();
+                    cout << "Apakah anda ingin kembali? y/n "; cin >> ulang;
+                    cin.ignore();
+                }while(ulang == 'n');
+            break;
+
+            case 7 :
+            kembali = 7;
             break;
 
             default :
@@ -65,7 +85,7 @@ int main(){
             break;
 
         }
-    }while(kembali != 5);
+    }while(kembali != 7);
 }
 
 

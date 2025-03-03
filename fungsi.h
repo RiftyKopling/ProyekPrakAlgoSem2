@@ -99,3 +99,63 @@ void tambahsiswa()
         jumlahsiswa++;
     }
 }
+
+void cariguru(){
+    string inputnip;
+    cout << "Masukkan sebagian NIP: ";
+    cin >> inputnip;
+
+    cout << "Hasil pencarian: " << endl;
+    bool ditemukan = false;
+
+    for (int i = 0; i < jumlahguru; i++) {
+        string nipstr = to_string(daftarguru[i].nip);
+        int lenMain = nipstr.length();
+        int lenSub = inputnip.length();
+
+        for (int j = 0; j <= lenMain - lenSub; j++) {
+            if (nipstr.substr(j, lenSub) == inputnip){
+                cout << "Nama       : " << daftarguru[i].nama << endl;
+                cout << "NIP        : " << daftarguru[i].nip << endl;
+                cout << "Mapel      : " << daftarguru[i].mapel << endl;
+                cout << endl;
+                ditemukan = true;
+                break;
+            }
+        }
+    }
+
+    if (!ditemukan) {
+        cout << "Tidak ada guru dengan NIP yang mengandung \"" << inputnip << "\".\n";
+    }
+}
+
+void carisiswa(){
+    string inputnis;
+    cout << "Masukkan sebagian NIS: ";
+    cin >> inputnis;
+
+    cout << "Hasil pencarian: " << endl;
+    bool ditemukan = false;
+
+    for (int i = 0; i < jumlahsiswa; i++) {
+        string nisstr = to_string(daftarsiswa[i].nis);
+        int lenMain = nisstr.length();
+        int lenSub = inputnis.length();
+
+        for (int j = 0; j <= lenMain - lenSub; j++) {
+            if (nisstr.substr(j, lenSub) == inputnis){
+                cout << "Nama       : " << daftarsiswa[i].nama << endl;
+                cout << "NIP        : " << daftarsiswa[i].nis << endl;
+                cout << "Mapel      : " << daftarsiswa[i].kelas << endl;
+                cout << endl;
+                ditemukan = true;
+                break;
+            }
+        }
+    }
+
+    if (!ditemukan) {
+        cout << "Tidak ada guru dengan NIP yang mengandung \"" << inputnis << "\".\n";
+    }
+}
