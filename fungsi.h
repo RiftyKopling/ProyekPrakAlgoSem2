@@ -156,6 +156,6 @@ void carisiswa(){
     }
 
     if (!ditemukan) {
-        cout << "Tidak ada guru dengan NIP yang mengandung \"" << inputnis << "\".\n";
+        cout << "Tidak ada siswa dengan NIS yang mengandung \"" << inputnis << "\".\n";
     }
 }
