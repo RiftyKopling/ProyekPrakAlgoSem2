@@ -197,7 +197,7 @@ void daftarNilaiSiswa(){
         cout << "Nama       : " << daftarsiswa[i].nama << endl;
         cout << "NIS        : " << daftarsiswa[i].nis << endl;
         cout << "Kelas      : " << daftarsiswa[i].kelas << endl;
-        cout << "Nilai :" << endl;
+        cout << "Nilai      :" << endl;
         for (int j = 0; j < jumlahMapel; j++)
         {
             cout << daftarsiswa[i].nilai.mapel[j] << " : " << daftarsiswa[i].nilai.nilaiMapel[i] << endl;
@@ -236,65 +236,113 @@ bool loginSiswa(int username, string password, siswa daftarsiswa[],int jumlahsis
     return false;
 }
 
+void sortingNilaiPerMapel() {
+    cout << "=== Pilih Mata Pelajaran ===" << endl;
+    for (int i = 0; i < jumlahMapel; i++) {
+        cout << i + 1 << ". " << daftarsiswa[0].nilai.mapel[i] << endl;
+    }
+
+    int pilihan;
+    cout << "Masukkan nomor mapel yang ingin dicari: ";
+    cin >> pilihan;
+    cin.ignore();  // untuk menghindari masalah dengan getline jika diperlukan
+
+    if (pilihan < 1 || pilihan > jumlahMapel) {
+        cout << "Pilihan tidak valid!" << endl;
+        return;
+    }
+
+    int indexMapel = pilihan - 1;
+
+    // Salin data siswa ke array sementara
+    siswa temp[makssiswa];
+    for (int i = 0; i < jumlahsiswa; i++) {
+        temp[i] = daftarsiswa[i];
+    }
+
+    // Bubble sort berdasarkan nilai mapel
+    for (int i = 0; i < jumlahsiswa - 1; i++) {
+        for (int j = 0; j < jumlahsiswa - i - 1; j++) {
+            if (temp[j].nilai.nilaiMapel[indexMapel] < temp[j + 1].nilai.nilaiMapel[indexMapel]) {
+                swap(temp[j], temp[j + 1]);
+            }
+        }
+    }
+
+    cout << "\n=== Daftar Nilai Siswa (Mapel: " << daftarsiswa[0].nilai.mapel[indexMapel] << ") ===" << endl;
+    for (int i = 0; i < jumlahsiswa; i++) {
+        cout << i + 1 << ". " << temp[i].nama << " | NIS: " << temp[i].nis
+             << " | Nilai: " << temp[i].nilai.nilaiMapel[indexMapel] << endl;
+    }
+}
+
+
 
 int main(){
     int kembali = 1, pilih;
     char ulang = 'y';
     bool suksesLogin = false;
     int n = sizeof(daftarguru) / sizeof(daftarguru[0]);
-
-    system("cls");
-    cout << "========= LOGIN ==========" << endl;
-    cout << "1. Login sebagai Guru" << endl;
-    cout << "2. Login sebagai Siswa" << endl;
-    cout << "3. keluar" << endl;
-    cout << "> pilih 1/2 : ";
-    cin >> pilih;
-
-    system("cls");
-
     int username;
     string password;
 
     do
     {
-        cout << "Username : "; cin >> username;
-        cout << "Password : "; cin >> password;
-        switch (pilih)
-        {
-        case 1:
-            if (pilih == 1 && loginGuru(username, password, daftarguru, jumlahguru))
-            {
-                menu();
-                suksesLogin = true;
-                break;
-            } else {
-                percobaan--;
-                system("cls");
-                cout << "Login gagal! Username atau password salah." << endl;
-                cout << "Kesempatan anda tersisa " << percobaan << " kali lagi." << endl;
-            }
-        break;
-        case 2:
-            if (pilih == 2 && loginSiswa(username, password, daftarsiswa, jumlahsiswa))
-            {
-                menu();
-                suksesLogin = true;
-            } else {
-                percobaan--;
-                system("cls");
-                cout << "Login gagal! Username atau password salah." << endl;
-                cout << "Kesempatan anda tersisa " << percobaan << " kali lagi." << endl;
-            }
-        break;
+        system("cls");
+        cout << "========= LOGIN ==========" << endl;
+        cout << "1. Login sebagai Guru" << endl;
+        cout << "2. Login sebagai Siswa" << endl;
+        cout << "3. keluar" << endl;
+        cout << "> pilih 1/2 : ";
+        cin >> pilih;
 
-        default:
-            kembali = 1;
-        break;
-        } 
-    } while (percobaan > 0);
-    
-    
+        if (pilih == 3) break;
+
+        system("cls");
+
+        suksesLogin = false;
+        percobaan = 3;
+
+        while (percobaan > 0 && !suksesLogin) {
+            cout << "Username : "; cin >> username;
+            cout << "Password : "; cin >> password;
+            
+            switch (pilih) {
+            case 1:
+                if (loginGuru(username, password, daftarguru, jumlahguru)) {
+                    menu();
+                    suksesLogin = true;
+                } else {
+                    percobaan--;
+                    system("cls");
+                    cout << "Login gagal! Username atau password salah." << endl;
+                    cout << "Kesempatan anda tersisa " << percobaan << " kali lagi." << endl;
+                }
+                break;
+            case 2:
+                if (loginSiswa(username, password, daftarsiswa, jumlahsiswa)) {
+                    menu();
+                    suksesLogin = true;
+                } else {
+                    percobaan--;
+                    system("cls");
+                    cout << "Login gagal! Username atau password salah." << endl;
+                    cout << "Kesempatan anda tersisa " << percobaan << " kali lagi." << endl;
+                }
+                break;
+            default:
+                cout << "Pilihan tidak valid!" << endl;
+                break;
+            }
+        }
+
+        if (percobaan == 0) {
+            cout << "Anda telah melebihi batas percobaan login." << endl;
+            system("pause");
+        }
+
+    } while (true);
+    return 0;
 }
 
 void menu(){
@@ -313,7 +361,8 @@ do{
     cout << "6. Daftar nilai" << endl;
     cout << "7. Cari guru" << endl;
     cout << "8. Cari siswa" << endl;
-    cout << "9. Keluar" << endl;
+    cout << "9. Ranking Nilai Siswa" << endl;
+    cout << "10. Keluar" << endl;
     cout << "Pilih Menu : "; cin >> menu;
     cin.ignore();
 
@@ -389,11 +438,18 @@ do{
                     cin.ignore();
                 }while(ulang == 'n');
                 break;
-    
+
             case 9 :
-            // kembali = 5;
-            main();
-            break;
+            do {
+                system("cls");
+                sortingNilaiPerMapel();
+                    cout << "Apakah anda ingin kembali? y/n "; cin >> ulang;
+                    cin.ignore();
+                }while(ulang == 'n');
+                break;
+    
+            case 10 :
+            return;
 
             default :
             kembali = 1;
