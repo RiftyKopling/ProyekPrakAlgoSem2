@@ -162,9 +162,10 @@ void tampilkandataguru(guru* daftarguru, int jumlahguru, int index = 0)
 {
     if (index == jumlahguru)
         return;
-    cout << "Guru ke-" << index + 1 << " : " << daftarguru[index].nama << endl;
-    cout << "NIP       : " << daftarguru[index].nip << endl;
-    cout << "Mapel     : " << daftarguru[index].mapel << endl;
+    cout << left;
+    cout << setw(8) << "Guru ke-" << setw(5) << index + 1 << setw(3) << "  : " << daftarguru[index].nama << endl;
+    cout << "NIP            : " << daftarguru[index].nip << endl;
+    cout << "Mapel          : " << daftarguru[index].mapel << endl;
     cout << endl;
     tampilkandataguru(daftarguru, jumlahguru, index + 1);
 }
@@ -173,9 +174,9 @@ void tampilkandatasiswa(siswa* daftarsiswa, int n, int index = 0)
 {
     if (index == n)
         return;
-    cout << "Siswa ke-" << index + 1 << " : " << daftarsiswa[index].nama << endl;
-    cout << "NIS        : " << daftarsiswa[index].nis << endl;
-    cout << "Kelas      : " << daftarsiswa[index].kelas << endl;
+    cout << setw(8) << "Siswa ke-" << setw(3) << index + 1 << setw(3) << "  : " << daftarsiswa[index].nama << endl;
+    cout << "NIS           : " << daftarsiswa[index].nis << endl;
+    cout << "Kelas         : " << daftarsiswa[index].kelas << endl;
     cout << endl;
     tampilkandatasiswa(daftarsiswa, n, index + 1);
 }
