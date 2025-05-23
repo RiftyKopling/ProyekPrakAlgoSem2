@@ -155,8 +155,8 @@ void carisiswa(){
         for (int j = 0; j <= lenMain - lenSub; j++) {
             if (nisstr.substr(j, lenSub) == inputnis){
                 cout << "Nama       : " << daftarsiswa[i].nama << endl;
-                cout << "NIP        : " << daftarsiswa[i].nis << endl;
-                cout << "Mapel      : " << daftarsiswa[i].kelas << endl;
+                cout << "NIS        : " << daftarsiswa[i].nis << endl;
+                cout << "Kelas      : " << daftarsiswa[i].kelas << endl;
                 cout << endl;
                 ditemukan = true;
                 break;
@@ -245,7 +245,7 @@ void sortingNilaiPerMapel() {
     int pilihan;
     cout << "Masukkan nomor mapel yang ingin dicari: ";
     cin >> pilihan;
-    cin.ignore();  // untuk menghindari masalah dengan getline jika diperlukan
+    cin.ignore();
 
     if (pilihan < 1 || pilihan > jumlahMapel) {
         cout << "Pilihan tidak valid!" << endl;
@@ -254,13 +254,11 @@ void sortingNilaiPerMapel() {
 
     int indexMapel = pilihan - 1;
 
-    // Salin data siswa ke array sementara
     siswa temp[makssiswa];
     for (int i = 0; i < jumlahsiswa; i++) {
         temp[i] = daftarsiswa[i];
     }
 
-    // Bubble sort berdasarkan nilai mapel
     for (int i = 0; i < jumlahsiswa - 1; i++) {
         for (int j = 0; j < jumlahsiswa - i - 1; j++) {
             if (temp[j].nilai.nilaiMapel[indexMapel] < temp[j + 1].nilai.nilaiMapel[indexMapel]) {
@@ -275,8 +273,6 @@ void sortingNilaiPerMapel() {
              << " | Nilai: " << temp[i].nilai.nilaiMapel[indexMapel] << endl;
     }
 }
-
-
 
 int main(){
     int kembali = 1, pilih;
@@ -459,3 +455,4 @@ do{
     }while(kembali != 9);
 }
 
+//Rest in Peace 02/05/25
