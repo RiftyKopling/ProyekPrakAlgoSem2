@@ -1,0 +1,65 @@
+16
+Hisyam L Baihaqi S.Pd., M.Pd.
+123456789
+12345
+Agama Katolik
+Fiernaz Ingga Pratamai S.Pd., M.Pd.
+123456788
+11111
+Agama Hindu
+Aushaf Fathin Irsyad Nabil S.Pd., M.Pd.
+123456787
+12121
+Agama Buddha
+Raihan Natawangsa S.Pd., M.Pd.
+123456786
+22334
+Agama Konghucu
+Timothy Brian Megaranto Padang S.Pd., M.Pd.
+123456785
+88990
+Agama Islam
+Dewi Sartika S.Pd.
+123456784
+33445
+Matematika
+Bambang Sudjatmiko M.Pd.
+123456783
+55667
+Bahasa Indonesia
+Citra Dewi S.Pd., M.Pd.
+123456782
+77889
+IPA
+Eko Prasetyo S.Pd.
+123456781
+99001
+IPS
+Fitriani Wulandari M.Pd.
+123456780
+11223
+Bahasa Inggris
+Gunawan Setiawan S.Pd.
+123456779
+44556
+Seni Budaya
+Hana Lestari S.Pd., M.Pd.
+123456778
+66778
+PJOK
+Irfan Maulana S.Pd.
+123456777
+88992
+PKN
+Jihan Ayu M.Pd.
+123456776
+99887
+Prakarya
+Kurniawan Adi S.Pd.
+123456775
+77665
+Bimbingan Konseling
+Anjay
+123240100
+
+Sastra Informatika
