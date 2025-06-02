@@ -336,11 +336,9 @@ void inputNilai()
                 ditemukan = true;
                 break;
             }
-        }
-        cout << "Nilai berhasil ditambahkan!" << endl;
+        } 
+    }cout << "Nilai berhasil ditambahkan!" << endl;
         cout << "=====================================================" << endl;
-        cin.ignore();
-    }
     simpannilai("nilai.txt");
 }
 

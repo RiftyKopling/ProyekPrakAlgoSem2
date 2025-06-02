@@ -1,4 +1,4 @@
-25
+26
 Muhammad Rifty Alfattah
 123240001
 VII A
@@ -99,4 +99,7 @@ Wahyu Nugroho
 123240025
 IX A
 300327
+Muhammad Ronaldo
+124356879
+IF-H
 
